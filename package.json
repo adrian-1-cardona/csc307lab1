@@ -6,11 +6,16 @@
   "author": "",
   "type": "commonjs",
   "main": "index.js",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "npm run dev --workspace react-frontend",
     "build": "npm run build --workspace react-frontend",
     "lint": "npm run lint --workspace react-frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6"
   }
 }
