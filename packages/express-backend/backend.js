@@ -1,7 +1,8 @@
 // backend.js
 import express from "express";
-app.use(cors());
+import cors from "cors";
 const app = express();
+app.use(cors());
 const port = 8000;
 const users = {
   users_list: [
@@ -66,18 +67,27 @@ app.get("/users/:id", (req, res) => {
   }
 });
 
+function generateRandomId() {
+  return Math.floor(Math.random() * 1000000).toString();
+}
+
 app.post("/users", (req, res) => {
-  const user = req.body;
-  users["users_list"].push(user);
-  res.status(201).send(user);
+  const newUser = req.body;
+  newUser.id = generateRandomId();
+  users["users_list"].push(newUser);
+  res.status(201).send(newUser);
 });
 
 app.delete("/users/:id", (req, res) => {
-  const id = req.params["id"];
-  users["users_list"] = users["users_list"].filter(
-    (user) => user["id"] !== id
-  );
-  res.status(204).send();
+  const userId = req.params["id"];
+  const index = users["users_list"].findIndex(user => user.id == userId);
+  
+  if (index !== -1) {
+    users["users_list"].splice(index, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send();
+  }
 });
 
 app.listen(port, () => {
