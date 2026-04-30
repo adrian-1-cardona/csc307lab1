@@ -54,7 +54,7 @@ function MyApp() {
     })
       .then((res) => {
         if (res.status === 204) {
-          setCharacters((prev) => prev.filter(character => character._id !== _id));
+          setCharacters((prev) => prev.filter(character => character._id !== id));
         } else if (res.status === 404) {
           console.log("User not found");
         }
