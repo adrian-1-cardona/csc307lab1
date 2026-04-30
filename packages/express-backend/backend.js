@@ -65,7 +65,7 @@ app.delete("/users/:id", (req, res) => {
       if (user === null) {
         res.status(404).send();
       } else {
-        return userServices.deleteUser(userId); // You'll need to add this function
+        return userServices.deleteUser(userId);
       }
     })
     .then(() => {
