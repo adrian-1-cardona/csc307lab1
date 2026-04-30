@@ -49,7 +49,7 @@ function removeOneCharacter(id) {
   })
     .then((res) => {
       if (res.status === 204) {
-        setCharacters(characters.filter(character => character.id !== id));
+        setCharacters(characters.filter(character => character._id !== _id));
       } else if (res.status === 404) {
         console.log("User not found");
       }
