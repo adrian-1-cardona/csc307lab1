@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "concurrently \"mongod --dbpath ~/data/db\" \"npm run dev --workspace express-backend\" \"npm run dev --workspace react-frontend\"",
+    "dev": "concurrently \"mongod --dbpath ~/data/db --quiet\" \"npm run dev --workspace express-backend\" \"npm run dev --workspace react-frontend\"",
     "build": "npm run build --workspace react-frontend",
     "lint": "npm run lint --workspace react-frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
